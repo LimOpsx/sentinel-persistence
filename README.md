@@ -9,3 +9,7 @@
 7. TDengine的安装查看它官网文档就好了，在jdbc操作它，直接看sentinel-dashboard包下的pom文件，我已经引入了
 8. 如果你想拿来即用，那么你安装好时序数据库后，改改sentinel-dashboard的yml配置文件，数据库地址改一下，然后TaosDBMetricsRepository类里面的保存数据方法，我指定了一个表名，看你自己喜欢不，不喜欢可以改掉。
 8. 本项目基于 https://gitee.com/hhjiesen/sentinel-rule-nacos?_from=gitee_search 改造而来，十分感谢
+9. 数据建表sql,这是TDengine里的超级表,查询并不是查这个名字的
+```
+CREATE STABLE meters (ts TIMESTAMP,id INT,gmtcreate TIMESTAMP,gmtmodified TIMESTAMP,app NCHAR ( 50 ),_timestamp TIMESTAMP,resource NCHAR ( 50 ),passqps INT,successqps INT,blockqps INT,exceptionqps INT,rt DOUBLE,count INT,resourcecode INT ) TAGS (_version NCHAR ( 10 ));、
+```
